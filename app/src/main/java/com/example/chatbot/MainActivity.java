@@ -81,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
             adapter.notifyItemInserted(chatMessages.size()-1);
             recyclerView.scrollToPosition(chatMessages.size()-1);
             System.out.println("inserting users message");
+            etMessage.setText("");
+            etMessage.clearFocus();
+            etMessage.clearComposingText();
 
             Call<ResponsePost> call = RetrofitClient.getInstance()
                     .getAPI().getChatResponse(username, message);
