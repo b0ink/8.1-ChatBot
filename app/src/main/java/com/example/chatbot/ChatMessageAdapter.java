@@ -1,6 +1,7 @@
 package com.example.chatbot;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Layout;
@@ -67,6 +68,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             this.context = context;
         }
 
+        @SuppressLint("ResourceAsColor")
         public void bind(ChatMessage chatMessage) {
             tvUsersIcon.setVisibility(View.GONE);
             tvAiIcon.setVisibility(View.GONE);
@@ -74,11 +76,13 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             if (chatMessage.getAuthor() == ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_USER) {
                 tvUsersIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.RIGHT);
-                tvMessageText.setBackgroundColor(Color.parseColor("#14E88C"));
+                tvMessageText.setBackgroundColor(R.color.chat_user_bubble_background);
+                tvMessageText.setTextColor(R.color.chat_user_bubble_text);
             } else {
                 tvAiIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.LEFT);
-                tvMessageText.setBackgroundColor(Color.parseColor("#FFCCCCCC"));
+                tvMessageText.setBackgroundColor(R.color.chat_ai_bubble_background);
+                tvMessageText.setTextColor(R.color.chat_ai_bubble_text);
             }
 
             tvMessageText.setText(chatMessage.getMessage());
