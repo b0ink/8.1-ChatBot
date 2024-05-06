@@ -37,7 +37,7 @@
             android:id="@+id/tvMessageText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#CCCCCC"
+            android:backgroundTint="#14E88C"
             android:fontFamily="@font/inter_medium"
             android:includeFontPadding="false"
             android:lineSpacingExtra="8sp"

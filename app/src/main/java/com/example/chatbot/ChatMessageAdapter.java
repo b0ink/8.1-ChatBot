@@ -2,6 +2,7 @@ package com.example.chatbot;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -73,9 +74,11 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             if (chatMessage.getAuthor() == ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_USER) {
                 tvUsersIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.RIGHT);
+                tvMessageText.setBackgroundColor(Color.parseColor("#14E88C"));
             } else {
                 tvAiIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.LEFT);
+                tvMessageText.setBackgroundColor(Color.parseColor("#FFCCCCCC"));
             }
 
             tvMessageText.setText(chatMessage.getMessage());
