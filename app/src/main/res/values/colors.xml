@@ -11,4 +11,7 @@
     <color name="chat_ai_bubble_background">#FFCCCCCC</color>
     <color name="chat_ai_bubble_text">#000000</color>
 
+    <color name="button_background_primary">#FF3D82</color>
+    <color name="button_text_primary">#FFFFFF</color>
+
 </resources>

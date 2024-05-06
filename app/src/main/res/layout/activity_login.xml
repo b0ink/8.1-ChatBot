@@ -21,16 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
+            android:fontFamily="@font/poppins_bold_italic"
             android:text="AI\nChat Bot"
             android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="45sp"
+            android:textColor="#3D5EFF"
+            android:textSize="55sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
             android:ems="10"
             android:hint="Username"
             android:inputType="text"
@@ -43,8 +45,10 @@
             android:layout_height="60dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:backgroundTint="#094966"
+            android:backgroundTint="@color/button_background_primary"
             android:text="Start talking!"
+            android:textColor="@color/button_text_primary"
+            android:textSize="18sp"
             app:cornerRadius="6dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
