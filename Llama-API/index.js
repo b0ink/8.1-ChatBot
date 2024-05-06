@@ -99,8 +99,6 @@ app.post("/chat", async (req, res) => {
     If you want to reply with any new lines, use \n.
     [/INST]`;
 
-    console.log(query);
-
     const result = await model.invoke(query);
     console.log(result);
 
