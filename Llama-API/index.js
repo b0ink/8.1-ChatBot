@@ -75,7 +75,10 @@ app.post("/chat", async (req, res) => {
     });
 
     const { username, message } = req.body;
-
+    if(!username || !message){
+        console.log(username, message);
+        return res.status(400).json({message:"Invalid username/message sent in post request"})
+    }
     let filteredUsername = username.trim();
 
     if (!(filteredUsername in chat_history)) {
