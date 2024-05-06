@@ -91,7 +91,7 @@ app.post("/chat", async (req, res) => {
 
     const query = `[INST]
     You are a friendly chat bot. You are talking to a user called '${username}'.
-    You are referred to as 'AI' in the chat history.
+    You are referred to as 'AI' in the chat history. Your random seed is ${Math.random()}
     Here is the current conversation in sequential order:
     ${JSON.stringify(conversation.history)}
 
