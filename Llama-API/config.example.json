@@ -1,0 +1,5 @@
+{
+    "EXPRESS_PORT": 3000,
+    "accessToken": "your-gradient-ai-access-token",
+    "workspaceId": "your-gradient-ai-workspace-id"
+}
