@@ -10,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,9 +53,9 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
 
     public class ChatMessagesViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout llMessageContainer;
-        private Button tvAiIcon;
-        private Button tvUsersIcon;
-        private Button tvMessageText;
+        private ImageView tvAiIcon;
+//        private Button tvUsersIcon;
+        private TextView tvMessageText;
 
 
         private Context context;
@@ -62,7 +64,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             super(itemView);
             llMessageContainer = itemView.findViewById(R.id.llMessageContainer);
             tvAiIcon = itemView.findViewById(R.id.tvAiIcon);
-            tvUsersIcon = itemView.findViewById(R.id.tvUsersIcon);
+//            tvUsersIcon = itemView.findViewById(R.id.tvUsersIcon);
             tvMessageText = itemView.findViewById(R.id.tvMessageText);
 
             this.context = context;
@@ -70,19 +72,22 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
 
         @SuppressLint("ResourceAsColor")
         public void bind(ChatMessage chatMessage) {
-            tvUsersIcon.setVisibility(View.GONE);
+//            tvUsersIcon.setVisibility(View.GONE);
             tvAiIcon.setVisibility(View.GONE);
 
             if (chatMessage.getAuthor() == ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_USER) {
-                tvUsersIcon.setVisibility(View.VISIBLE);
+//                tvUsersIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.RIGHT);
-                tvMessageText.setBackgroundColor(R.color.chat_user_bubble_background);
-                tvMessageText.setTextColor(R.color.chat_user_bubble_text);
+                tvMessageText.setBackgroundResource(R.drawable.text_view_background_user);
+//                tvMessageText.setBackgroundColor(R.color.chat_user_bubble_background);
+//                tvMessageText.setTextColor(R.color.chat_user_bubble_text);
             } else {
                 tvAiIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.LEFT);
-                tvMessageText.setBackgroundColor(R.color.chat_ai_bubble_background);
-                tvMessageText.setTextColor(R.color.chat_ai_bubble_text);
+                tvMessageText.setBackgroundResource(R.drawable.text_view_background_ai);
+
+//                tvMessageText.setBackgroundColor(R.color.chat_ai_bubble_background);
+//                tvMessageText.setTextColor(R.color.chat_ai_bubble_text);
             }
 
             tvMessageText.setText(chatMessage.getMessage());
