@@ -1,11 +1,17 @@
 package com.example.chatbot;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -68,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
 
         String username = intent.getStringExtra(EXTRA_USERS_NAME);
 
+        etMessage.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_NULL) {
+                    btnSend.performClick();
+                    btnSend.requestFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         btnSend.setOnClickListener(view -> {
             if(chatMessages.size() > 0){
                 ChatMessage lastMessage = chatMessages.get(chatMessages.size()-1);
@@ -78,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
 
             String message = etMessage.getText().toString();
             if (message.isEmpty()) {
-                //TODO: messsage cannot be empty
-                System.out.println("message input was empty");
                 return;
             }
+
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
             ChatMessage usersMessage = new ChatMessage(message, ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_USER);
             chatMessages.add(usersMessage);
