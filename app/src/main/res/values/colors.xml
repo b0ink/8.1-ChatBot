@@ -3,7 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="background_color">#000000</color>
+    <color name="background_gradient_start">#1099ff</color>
+    <color name="background_gradient_end">#3ed8ff</color>
 
     <color name="chat_user_bubble_background">#14E88C</color>
     <color name="chat_user_bubble_text">#000000</color>
