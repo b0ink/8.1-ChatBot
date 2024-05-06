@@ -88,6 +88,8 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
                 tvAiIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.LEFT);
                 tvMessageText.setBackgroundResource(R.drawable.text_view_background_ai);
+                tvMessageText.setVisibility(View.VISIBLE);
+
                 if(chatMessage.getMessage().isEmpty()){
                     gifSpinner.setVisibility(View.VISIBLE);
                     tvMessageText.setVisibility(View.GONE);
