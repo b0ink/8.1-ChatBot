@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
         String username = intent.getStringExtra(EXTRA_USERS_NAME);
 
         btnSend.setOnClickListener(view -> {
+            if(chatMessages.size() > 0){
+                ChatMessage lastMessage = chatMessages.get(chatMessages.size()-1);
+                if(lastMessage.getAuthor() == ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_USER){
+                    return;
+                }
+            }
 
             String message = etMessage.getText().toString();
             if (message.isEmpty()) {
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             etMessage.setText("");
             etMessage.clearFocus();
             etMessage.clearComposingText();
+            etMessage.setEnabled(false);
 
             Call<ResponsePost> call = RetrofitClient.getInstance()
                     .getAPI().getChatResponse(username, message);
@@ -101,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                     chatMessages.add(newMessage);
                     adapter.notifyItemInserted(chatMessages.size()-1);
                     recyclerView.scrollToPosition(chatMessages.size()-1);
+                    etMessage.setEnabled(true);
+
                     System.out.println("response from ai"+ messageResponse);
                 }
 
