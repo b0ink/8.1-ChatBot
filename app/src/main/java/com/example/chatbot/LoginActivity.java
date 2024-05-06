@@ -44,7 +44,10 @@ public class LoginActivity extends AppCompatActivity {
 
         btnStartTalking.setOnClickListener(view -> {
             String username = etUsername.getText().toString().trim();
-            //TODO check for white space
+            if(username.isEmpty()){
+                Toast.makeText(this, "Username can not be empty!", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
             Call<ResponsePost> call = RetrofitClient.getInstance()
                     .getAPI().initUser(username);
