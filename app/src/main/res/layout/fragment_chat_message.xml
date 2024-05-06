@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
     android:background="@android:color/transparent"
-    android:gravity="right"
+    android:gravity="left"
     android:orientation="horizontal">
 
     <!--    Robot icons created by Hilmy Abiyyu A. - Flaticon-->
@@ -34,6 +34,16 @@
     <!--        android:textColor="#000000"-->
     <!--        android:textSize="16sp" -->
 
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifSpinner"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:backgroundTintMode="multiply"
+        android:scaleType="fitCenter"
+        android:src="@drawable/typing_indicator"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/tvMessageText"
         android:layout_width="wrap_content"
@@ -49,7 +59,7 @@
         android:paddingTop="10dp"
         android:paddingRight="17dp"
         android:paddingBottom="10dp"
-        android:text="hello world"
+        android:text="     "
         android:textAlignment="viewStart"
         android:textColor="#000000"
         android:textSize="16sp" />

@@ -1,5 +1,6 @@
 package com.example.chatbot;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -92,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
             etMessage.clearComposingText();
             etMessage.setEnabled(false);
 
+            ChatMessage placeholderMessage = new ChatMessage("", ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_AI);
+            chatMessages.add(placeholderMessage);
+            adapter.notifyItemInserted(chatMessages.size()-1);
+            recyclerView.scrollToPosition(chatMessages.size()-1);
+
             Call<ResponsePost> call = RetrofitClient.getInstance()
                     .getAPI().getChatResponse(username, message);
 
@@ -103,10 +109,16 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
 
+//                    chatMessages.remove(chatMessages.size()-1);
+//                    adapter.notifyDataSetChanged();
+
                     String messageResponse = response.body().message;
-                    ChatMessage newMessage = new ChatMessage(messageResponse, ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_AI);
-                    chatMessages.add(newMessage);
-                    adapter.notifyItemInserted(chatMessages.size()-1);
+//                    ChatMessage newMessage = new ChatMessage(messageResponse, ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_AI);
+                    ChatMessage newMessage = chatMessages.get(chatMessages.size()-1);
+                    newMessage.setMessage(messageResponse);
+
+//                    chatMessages.add(newMessage);
+                    adapter.notifyItemChanged(chatMessages.size()-1);
                     recyclerView.scrollToPosition(chatMessages.size()-1);
                     etMessage.setEnabled(true);
 

@@ -56,7 +56,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
         private ImageView tvAiIcon;
 //        private Button tvUsersIcon;
         private TextView tvMessageText;
-
+        private ImageView gifSpinner;
 
         private Context context;
 
@@ -66,7 +66,7 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
             tvAiIcon = itemView.findViewById(R.id.tvAiIcon);
 //            tvUsersIcon = itemView.findViewById(R.id.tvUsersIcon);
             tvMessageText = itemView.findViewById(R.id.tvMessageText);
-
+            gifSpinner = itemView.findViewById(R.id.gifSpinner);
             this.context = context;
         }
 
@@ -74,6 +74,9 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
         public void bind(ChatMessage chatMessage) {
 //            tvUsersIcon.setVisibility(View.GONE);
             tvAiIcon.setVisibility(View.GONE);
+
+            gifSpinner.setVisibility(View.GONE);
+            tvMessageText.setText(chatMessage.getMessage());
 
             if (chatMessage.getAuthor() == ChatMessage.AUTHOR_TYPE.AUTHOR_TYPE_USER) {
 //                tvUsersIcon.setVisibility(View.VISIBLE);
@@ -85,12 +88,14 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
                 tvAiIcon.setVisibility(View.VISIBLE);
                 llMessageContainer.setGravity(Gravity.LEFT);
                 tvMessageText.setBackgroundResource(R.drawable.text_view_background_ai);
-
+                if(chatMessage.getMessage().isEmpty()){
+                    gifSpinner.setVisibility(View.VISIBLE);
+                    tvMessageText.setVisibility(View.GONE);
+                }
 //                tvMessageText.setBackgroundColor(R.color.chat_ai_bubble_background);
 //                tvMessageText.setTextColor(R.color.chat_ai_bubble_text);
             }
 
-            tvMessageText.setText(chatMessage.getMessage());
         }
 
     }

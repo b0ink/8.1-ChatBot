@@ -18,6 +18,10 @@ public class ChatMessage {
         return message;
     }
 
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public AUTHOR_TYPE getAuthor() {
         return author;
     }
