@@ -23,6 +23,6 @@ public interface API {
     @POST("/chat")
     Call<ResponsePost> getChatResponse(
             @Field("username") String username,
-            @Field("username") String message
+            @Field("message") String message
     );
 }

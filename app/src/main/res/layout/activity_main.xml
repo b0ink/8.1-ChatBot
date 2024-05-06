@@ -14,10 +14,17 @@
         android:padding="15dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_above="@id/llMessageInputLayout"
+            android:paddingBottom="25dp"
+            app:reverseLayout="true"
+            tools:itemCount="4"
+            tools:listitem="@layout/fragment_chat_message" />
 
         <LinearLayout
+            android:id="@+id/llMessageInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -25,7 +32,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextText"
+                android:id="@+id/etMessage"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginRight="15dp"
@@ -37,7 +44,7 @@
                 android:paddingLeft="15dp" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btnSend"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_vertical"

@@ -48,8 +48,6 @@ public class ChatMessageAdapter extends RecyclerView.Adapter<ChatMessageAdapter.
     }
 
     public class ChatMessagesViewHolder extends RecyclerView.ViewHolder {
-        private RelativeLayout rlTaskView;
-
         private LinearLayout llMessageContainer;
         private Button tvAiIcon;
         private Button tvUsersIcon;
