@@ -70,7 +70,7 @@ app.post("/chat", async (req, res) => {
         modelSlug: "llama3-70b-chat",
         inferenceParameters: {
             maxGeneratedTokenCount: 500,
-            temperature: Math.random() * 0.4,
+            temperature: 0.9,
         },
     });
 
@@ -97,7 +97,7 @@ app.post("/chat", async (req, res) => {
     ${JSON.stringify(conversation.history)}
 
     Your response should only include your reply to the user's most recent message, with out any quote marks at the start or end.
-    If you want to reply with any new lines, use \n.
+    If you want to reply with any new linCes, use \n.
     [/INST]`;
 
     const result = await model.invoke(query);
